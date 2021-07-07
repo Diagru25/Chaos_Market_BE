@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "73fd1c37-659e-4513-a387-763229531883",
+		"name": "Chaos Market API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Laptop\",\r\n    \"description\": \"Laptop\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all brands",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/brands",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create brand",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Samsung\",\r\n    \"description\": \"Samsung\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/brands",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"brands"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/Anh/background/iphone8-plus-space-gray.png"
+						},
+						{
+							"key": "name",
+							"value": "Iphone 8 Plus",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Iphone 8 plus 64GB, black",
+							"type": "text"
+						},
+						{
+							"key": "category_id",
+							"value": "60e54ec138fd992294130299",
+							"type": "text"
+						},
+						{
+							"key": "brand_id",
+							"value": "60e54f5e38fd99229413029e",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "8000000",
+							"type": "text"
+						},
+						{
+							"key": "ratting",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "New",
+							"type": "text"
+						},
+						{
+							"key": "import_date",
+							"value": "1625642468",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/products/60e55682a3a26134fc30920d",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products",
+						"60e55682a3a26134fc30920d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "delete product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "get 1 product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
