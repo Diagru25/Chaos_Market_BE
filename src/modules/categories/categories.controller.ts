@@ -1,6 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CategoriesService } from '../database/services/categories.service';
-
 @Controller('categories')
 export class CategoriesController {
     constructor(private readonly categoriesService: CategoriesService){}
