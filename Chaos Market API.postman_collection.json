@@ -6,204 +6,370 @@
 	},
 	"item": [
 		{
-			"name": "get all categories",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/categories",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"categories"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create category",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Laptop\",\r\n    \"description\": \"Laptop\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "users",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Vu Tuan Son\",\r\n    \"username\": \"diagru\",\r\n    \"password\": \"1\",\r\n    \"address\": \"Ha Noi\",\r\n    \"sex\": 0,\r\n    \"email\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"users"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:5000/categories",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"categories"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get all brands",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:5000/brands",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"brands"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "create brand",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Samsung\",\r\n    \"description\": \"Samsung\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get one user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpYWdydSIsInN1YiI6IjYwZWU2MzIxZDZkMGNmMWRhODA1ZWYxZCIsImlhdCI6MTYyNjI0ODI1MiwiZXhwIjoxNjI2MzM0NjUyfQ.N6drvPqBJmYh4hcw2G1HtLDegGTXkAro63D9EwRMjL4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x_access_token",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpYWdydSIsInN1YiI6IjYwZWU2MzIxZDZkMGNmMWRhODA1ZWYxZCIsImlhdCI6MTYyNjI0ODI1MiwiZXhwIjoxNjI2MzM0NjUyfQ.N6drvPqBJmYh4hcw2G1HtLDegGTXkAro63D9EwRMjL4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:5000/v1/users/60ee6321d6d0cf1da805ef1d",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"users",
+								"60ee6321d6d0cf1da805ef1d"
+							]
 						}
-					}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"diagru\",\r\n    \"password\": \"1\",\r\n    \"email\": \"abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "update product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "localhost:5000/v1/products/60e55682a3a26134fc30920d",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products",
+								"60e55682a3a26134fc30920d"
+							]
+						}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:5000/brands",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"brands"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add product",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "image",
-							"type": "file",
-							"src": "/D:/Anh/background/iphone8-plus-space-gray.png"
-						},
-						{
-							"key": "name",
-							"value": "Iphone 8 Plus",
-							"type": "text"
-						},
-						{
-							"key": "description",
-							"value": "Iphone 8 plus 64GB, black",
-							"type": "text"
-						},
-						{
-							"key": "category_id",
-							"value": "60e54ec138fd992294130299",
-							"type": "text"
-						},
-						{
-							"key": "brand_id",
-							"value": "60e54f5e38fd99229413029e",
-							"type": "text"
-						},
-						{
-							"key": "price",
-							"value": "8000000",
-							"type": "text"
-						},
-						{
-							"key": "ratting",
-							"value": "5",
-							"type": "text"
-						},
-						{
-							"key": "status",
-							"value": "New",
-							"type": "text"
-						},
-						{
-							"key": "import_date",
-							"value": "1625642468",
-							"type": "text"
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/products/60e5616f2e6550141431aba8",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products",
+								"60e5616f2e6550141431aba8"
+							]
 						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:5000/products/60e55682a3a26134fc30920d",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"products",
-						"60e55682a3a26134fc30920d"
-					]
+				{
+					"name": "get 1 product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/products/60e5616f2e6550141431aba8",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products",
+								"60e5616f2e6550141431aba8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/D:/Anh/background/iphone8-plus-space-gray.png"
+								},
+								{
+									"key": "name",
+									"value": "Iphone 8 Plus",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Iphone 8 plus 64GB, black",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "60e54ec138fd992294130299",
+									"type": "text"
+								},
+								{
+									"key": "brand_id",
+									"value": "60e54f5e38fd99229413029e",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "8000000",
+									"type": "text"
+								},
+								{
+									"key": "ratting",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "New",
+									"type": "text"
+								},
+								{
+									"key": "import_date",
+									"value": "1625642468",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/v1/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "update product",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
+			"name": "brands",
+			"item": [
+				{
+					"name": "create brand",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Samsung\",\r\n    \"description\": \"Samsung\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/v1/brands",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all brands",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/brands",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"brands"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "delete product",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "get all products",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
-		},
-		{
-			"name": "get 1 product",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": null
-			},
-			"response": []
+			"name": "categories",
+			"item": [
+				{
+					"name": "get all categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Laptop\",\r\n    \"description\": \"Laptop\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/v1/categories",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
