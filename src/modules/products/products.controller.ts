@@ -8,11 +8,13 @@ import {
   Put,
   UploadedFile,
   UseInterceptors,
+  UseGuards
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { ProductsService } from '../database/services/products.service';
+import { RolesGuard } from '../auth/guards/roles.guard';
 
 @Controller('v1/products')
 export class ProductsController {
