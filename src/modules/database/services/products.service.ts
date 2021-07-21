@@ -34,11 +34,27 @@ export class ProductsService {
   }
 
   async update(id: string, data: Product): Promise<any> {
-      const realId = new ObjectId(id);
-      return this.productModel.findByIdAndUpdate(realId, {
+    const realId = new ObjectId(id);
+    return this.productModel
+      .findByIdAndUpdate(realId, {
         ...data,
         category_id: new ObjectId(data.category_id),
         brand_id: new ObjectId(data.brand_id),
-      }).exec();
+      })
+      .exec();
+  }
+
+  async getBestSeller(): Promise<Product[]> {
+      const bestSeller = this.productModel
+        .find()
+        .sort({ sold: -1 })
+        .limit(5)
+        .populate([
+          { path: 'category_id', select: 'name' },
+          { path: 'brand_id', select: 'name' },
+        ])
+        .exec();
+
+      return bestSeller;
   }
 }

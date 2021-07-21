@@ -25,6 +25,11 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
+  @Get('/best-seller')
+  async getBestSeller() {
+    return this.productsService.getBestSeller();
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.productsService.findOne(id);
@@ -74,10 +79,10 @@ export class ProductsController {
     }),
   )
   async update(@Param('id') id: string, @Body() data, @UploadedFile() file) {
-      const product = {
-        ...data,
-        image: file ? file.filename : '',
-      };
-      return this.productsService.update(id, product);
+    const product = {
+      ...data,
+      image: file ? file.filename : '',
+    };
+    return this.productsService.update(id, product);
   }
 }
