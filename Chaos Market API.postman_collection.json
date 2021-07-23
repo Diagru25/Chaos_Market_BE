@@ -11,11 +11,21 @@
 				{
 					"name": "create user",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvb20iLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiI2MGY5MDI0MTZkMWM5ZTBhZDQ3YjFkNmIiLCJpYXQiOjE2MjY5Mzg1NzIsImV4cCI6MTYyNzAyNDk3Mn0.6GE2F8vdBzIuuSoQp35I_stbmuUzV33b1XDFHNtc6l0",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Vu Tuan Son\",\r\n    \"username\": \"diagru\",\r\n    \"password\": \"1\",\r\n    \"address\": \"Ha Noi\",\r\n    \"sex\": 0,\r\n    \"email\": \"\"\r\n}",
+							"raw": "{\r\n    \"name\": \"Pham Minh Tien\",\r\n    \"username\": \"boom\",\r\n    \"password\": \"1\",\r\n    \"address\": \"Ha Noi\",\r\n    \"sex\": 0,\r\n    \"email\": \"\",\r\n    \"role\": \"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -44,7 +54,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpYWdydSIsInN1YiI6IjYwZWU2MzIxZDZkMGNmMWRhODA1ZWYxZCIsImlhdCI6MTYyNjI0ODI1MiwiZXhwIjoxNjI2MzM0NjUyfQ.N6drvPqBJmYh4hcw2G1HtLDegGTXkAro63D9EwRMjL4",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImRpYWdydSIsInJvbGUiOiJyb290Iiwic3ViIjoiNjBlZTYzMjFkNmQwY2YxZGE4MDVlZjFkIiwiaWF0IjoxNjI2OTM3NDgwLCJleHAiOjE2MjcwMjM4ODB9.DZutsFEWWRFnbkwwYHNa6dWDjzx0via_ofLcYDA2VjU",
 									"type": "string"
 								}
 							]
@@ -71,6 +81,74 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get all user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvb20iLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiI2MGY5MDI0MTZkMWM5ZTBhZDQ3YjFkNmIiLCJpYXQiOjE2MjY5Mzg1NzIsImV4cCI6MTYyNzAyNDk3Mn0.6GE2F8vdBzIuuSoQp35I_stbmuUzV33b1XDFHNtc6l0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvb20iLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiI2MGY5MDI0MTZkMWM5ZTBhZDQ3YjFkNmIiLCJpYXQiOjE2MjY5Mzg1NzIsImV4cCI6MTYyNzAyNDk3Mn0.6GE2F8vdBzIuuSoQp35I_stbmuUzV33b1XDFHNtc6l0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": \"Ha tayooooooo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/v1/users/60f5082b95c0a43f207eff49",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"users",
+								"60f5082b95c0a43f207eff49"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -84,7 +162,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\": \"diagru\",\r\n    \"password\": \"1\",\r\n    \"email\": \"abc\"\r\n}",
+							"raw": "{\r\n    \"username\": \"boom\",\r\n    \"password\": \"1\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -140,6 +218,16 @@
 				{
 					"name": "delete product",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvb20iLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiI2MGY5MDI0MTZkMWM5ZTBhZDQ3YjFkNmIiLCJpYXQiOjE2MjcwMjg4MjAsImV4cCI6MTYyNzExNTIyMH0.Iy-3vW74pZQ2chgJ6FtA6Do9fEnN5VyEouYifRAaBCQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
@@ -197,8 +285,18 @@
 					"response": []
 				},
 				{
-					"name": "add product",
+					"name": "create product",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImJvb20iLCJyb2xlIjoiYWRtaW4iLCJzdWIiOiI2MGY5MDI0MTZkMWM5ZTBhZDQ3YjFkNmIiLCJpYXQiOjE2MjcwMjg4MjAsImV4cCI6MTYyNzExNTIyMH0.Iy-3vW74pZQ2chgJ6FtA6Do9fEnN5VyEouYifRAaBCQ",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -207,16 +305,16 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/D:/Anh/background/iphone8-plus-space-gray.png"
+									"src": "/D:/Anh/background/207-2070770_iphone-10-png-apple-iphone-x-space-grey.png"
 								},
 								{
 									"key": "name",
-									"value": "Iphone 8 Plus",
+									"value": "Iphone X",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Iphone 8 plus 64GB, black",
+									"value": "Iphone X pro max 128GB, black",
 									"type": "text"
 								},
 								{
@@ -231,12 +329,12 @@
 								},
 								{
 									"key": "price",
-									"value": "8000000",
+									"value": "2700",
 									"type": "text"
 								},
 								{
-									"key": "ratting",
-									"value": "5",
+									"key": "rating",
+									"value": "3.8",
 									"type": "text"
 								},
 								{
@@ -246,7 +344,12 @@
 								},
 								{
 									"key": "import_date",
-									"value": "1625642468",
+									"value": "1627030558",
+									"type": "text"
+								},
+								{
+									"key": "sold",
+									"value": "86",
 									"type": "text"
 								}
 							]
@@ -260,6 +363,46 @@
 							"path": [
 								"v1",
 								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "best seller",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/products/best-seller",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products",
+								"best-seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get new products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/products/new-products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"products",
+								"new-products"
 							]
 						}
 					},
@@ -364,6 +507,32 @@
 							"path": [
 								"v1",
 								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "resources",
+			"item": [
+				{
+					"name": "get image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/v1/resources/images/d5bbfc102aff923dde9b12599bdcf2ad.png",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"resources",
+								"images",
+								"d5bbfc102aff923dde9b12599bdcf2ad.png"
 							]
 						}
 					},
