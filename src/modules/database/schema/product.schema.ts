@@ -23,7 +23,7 @@ export class Product {
   price: number;
 
   @Prop()
-  ratting: number;
+  rating: number;
 
   @Prop()
   status: string; //New, Like new, Old

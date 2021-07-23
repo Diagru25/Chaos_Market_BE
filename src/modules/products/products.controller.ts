@@ -8,13 +8,14 @@ import {
   Put,
   UploadedFile,
   UseInterceptors,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { ProductsService } from '../database/services/products.service';
-import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles, RolesGuard } from '../auth/guards/roles.guard';
+import { Role } from 'src/configs/roles.enum';
 
 @Controller('v1/products')
 export class ProductsController {
@@ -30,11 +31,18 @@ export class ProductsController {
     return this.productsService.getBestSeller();
   }
 
+  @Get('/new-products')
+  async getNewProducts() {
+    return this.productsService.getNewProducts();
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.productsService.findOne(id);
   }
 
+  @UseGuards(RolesGuard)
+  @Roles(Role.Root, Role.Admin)
   @Post()
   @UseInterceptors(
     FileInterceptor('image', {
@@ -58,11 +66,15 @@ export class ProductsController {
     return this.productsService.create(product);
   }
 
+  @UseGuards(RolesGuard)
+  @Roles(Role.Root, Role.Admin)
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.productsService.delete(id);
   }
 
+  @UseGuards(RolesGuard)
+  @Roles(Role.Root, Role.Admin)
   @Put(':id')
   @UseInterceptors(
     FileInterceptor('image', {

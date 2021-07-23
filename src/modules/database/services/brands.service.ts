@@ -13,6 +13,7 @@ export class BrandsService {
     return this.brandModel.find().exec();
   }
 
+
   async create(data: Brand): Promise<Brand> {
     return this.brandModel.create(data);
   }

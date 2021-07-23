@@ -30,7 +30,7 @@ export class ProductsService {
 
   async delete(id: string): Promise<any> {
     const realId = new ObjectId(id);
-    return this.productModel.findByIdAndDelete(id).exec();
+    return this.productModel.findByIdAndDelete(realId).exec();
   }
 
   async update(id: string, data: Product): Promise<any> {
@@ -48,7 +48,7 @@ export class ProductsService {
       const bestSeller = this.productModel
         .find()
         .sort({ sold: -1 })
-        .limit(5)
+        .limit(8)
         .populate([
           { path: 'category_id', select: 'name' },
           { path: 'brand_id', select: 'name' },
@@ -56,5 +56,15 @@ export class ProductsService {
         .exec();
 
       return bestSeller;
+  }
+
+  async getNewProducts(): Promise<Product[]> {
+      const newProducts = this.productModel
+      .find()
+      .sort({import_date: -1})
+      .limit(8)
+      .exec();
+
+      return newProducts;
   }
 }
