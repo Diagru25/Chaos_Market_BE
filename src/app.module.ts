@@ -1,3 +1,4 @@
+
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import keys from './configs/keys';
@@ -8,6 +9,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { ResourcesModule } from './modules/resources/resources.module';
+import { CardsModule } from './modules/cards/cards.module';
 
 @Module({
   imports: [
@@ -18,7 +20,8 @@ import { ResourcesModule } from './modules/resources/resources.module';
     CategoriesModule,
     ProductsModule,
     UsersModule,
-    ResourcesModule
+    ResourcesModule,
+    CardsModule
   ],
 })
 export class AppModule {}
