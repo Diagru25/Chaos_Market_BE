@@ -21,6 +21,7 @@ export class AuthService {
       }
 
     return {
+        code: 200,
         user: user,
         message: 'success',
         access_token: this.jwtService.sign(payload)
