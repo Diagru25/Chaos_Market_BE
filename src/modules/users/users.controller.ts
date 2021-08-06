@@ -2,6 +2,7 @@ import { Body, Controller, Get, Param, Post, Put, Request, UseGuards } from '@ne
 import { UsersService } from '../database/services/users.service';
 import { Roles, RolesGuard } from '../auth/guards/roles.guard';
 import {Role} from 'src/configs/roles.enum';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 @Controller('v1/users')
 export class UsersController {
@@ -14,12 +15,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @UseGuards(RolesGuard)
-  @Roles(Role.Admin, Role.Root, Role.User)
-  @Get(':id')
-  async findOne(@Param('id') id: string, @Request() req) {
+  @UseGuards(JwtAuthGuard)
+  @Get('/info')
+  async findOne(@Request() req) {
     console.log(req.user);
-    return this.usersService.findOne(id);
+    return this.usersService.findOne(req.user.id);
   }
 
   @UseGuards(RolesGuard)

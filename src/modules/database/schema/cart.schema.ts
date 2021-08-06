@@ -3,10 +3,10 @@ import { Document, Types } from 'mongoose';
 import { User } from './user.schema';
 import { Product } from './product.schema';
 
-export type CardDocument = Card & Document;
+export type CartDocument = Cart & Document;
 
 @Schema()
-export class Card {
+export class Cart {
     @Prop({ required: true, type: Types.ObjectId, ref: User.name })
     owner: Types.ObjectId;
 
@@ -14,4 +14,4 @@ export class Card {
     items: Array<{ product: Product; quantity: number }>; //{product: Product, quantity: number}
 }
 
-export const CardSchema = SchemaFactory.createForClass(Card);
+export const CartSchema = SchemaFactory.createForClass(Cart);

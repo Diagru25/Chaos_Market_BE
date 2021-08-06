@@ -9,7 +9,7 @@ import { CategoriesModule } from './modules/categories/categories.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { ResourcesModule } from './modules/resources/resources.module';
-import { CardsModule } from './modules/cards/cards.module';
+import { CartsModule } from './modules/carts/Carts.module';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { CardsModule } from './modules/cards/cards.module';
     ProductsModule,
     UsersModule,
     ResourcesModule,
-    CardsModule
+    CartsModule
   ],
 })
 export class AppModule {}

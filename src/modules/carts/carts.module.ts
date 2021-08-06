@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AuthModule } from '../auth/auth.module';
 import { DatabaseModule } from '../database/database.module';
-import { CardsController } from './cards.controller';
+import { CartsController } from './carts.controller';
 
 @Module({
     imports: [DatabaseModule, AuthModule],
-    controllers: [CardsController],
+    controllers: [CartsController],
 })
-export class CardsModule {}
+export class CartsModule {}

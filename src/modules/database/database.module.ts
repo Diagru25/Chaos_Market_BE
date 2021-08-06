@@ -5,12 +5,12 @@ import {
     Category,
     Brand,
     User,
-    Card,
+    Cart,
     ProductSchema,
     CategorySchema,
     BrandSchema,
     UserSchema,
-    CardSchema,
+    CartSchema,
 } from './schema';
 import { JwtModule } from '@nestjs/jwt';
 import { BrandsService } from './services/brands.service';
@@ -18,7 +18,7 @@ import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
 import { UsersService } from './services/users.service';
 import { AuthService } from './services/auth.service';
-import { CardService } from './services/cards.service';
+import { CartsService } from './services/carts.service';
 
 import keys from 'src/configs/keys';
 
@@ -42,8 +42,8 @@ import keys from 'src/configs/keys';
                 schema: UserSchema,
             },
             {
-                name: Card.name,
-                schema: CardSchema,
+                name: Cart.name,
+                schema: CartSchema,
             },
         ]),
         JwtModule.register({
@@ -60,7 +60,7 @@ import keys from 'src/configs/keys';
         ProductsService,
         UsersService,
         AuthService,
-        CardService,
+        CartsService,
     ],
     exports: [
         BrandsService,
@@ -68,7 +68,7 @@ import keys from 'src/configs/keys';
         ProductsService,
         UsersService,
         AuthService,
-        CardService,
+        CartsService,
     ],
 })
 export class DatabaseModule {}
