@@ -35,53 +35,53 @@ export class AuthService {
         };
     }
 
-    async googleLogin(user: any) {
-        if (!user) {
-            return 'No user from google';
-        }
+    // async googleLogin(user: any) {
+    //     if (!user) {
+    //         return 'No user from google';
+    //     }
 
-        const foundUser = await this.userModel
-            .findOne({
-                googleId: user.googleId,
-            })
-            .exec();
+    //     const foundUser = await this.userModel
+    //         .findOne({
+    //             googleId: user.googleId,
+    //         })
+    //         .exec();
 
-        if (!foundUser) {
-            const tempUser: User = {
-                name: user.firstName + user.lastName,
-                googleId: user.google.Id,
-                email: user.email,
-                password: null,
-                username: null,
-                address: '',
-                sex: null,
-                facebookId: '',
-                avatar: user.picture,
-                role: 'user',
-            };
-            const newUser = await this.userModel.create(tempUser);
+    //     if (!foundUser) {
+    //         const tempUser: User = {
+    //             name: user.firstName + user.lastName,
+    //             googleId: user.google.Id,
+    //             email: user.email,
+    //             password: null,
+    //             username: null,
+    //             address: '',
+    //             sex: null,
+    //             facebookId: '',
+    //             avatar: user.picture,
+    //             role: 'user',
+    //         };
+    //         const newUser = await this.userModel.create(tempUser);
 
-            return {
-                code: 200,
-                user: newUser,
-                message: 'success',
-                access_token: this.jwtService.sign({
-                    role: newUser.role,
-                    sub: newUser._id,
-                }),
-            };
-        }
+    //         return {
+    //             code: 200,
+    //             user: newUser,
+    //             message: 'success',
+    //             access_token: this.jwtService.sign({
+    //                 role: newUser.role,
+    //                 sub: newUser._id,
+    //             }),
+    //         };
+    //     }
 
-        return {
-            code: 200,
-            user: foundUser,
-            message: 'success',
-            access_token: this.jwtService.sign({
-                role: foundUser.role,
-                sub: foundUser._id,
-            }),
-        };
-    }
+    //     return {
+    //         code: 200,
+    //         user: foundUser,
+    //         message: 'success',
+    //         access_token: this.jwtService.sign({
+    //             role: foundUser.role,
+    //             sub: foundUser._id,
+    //         }),
+    //     };
+    // }
 
     async validateUser(username: string, password: string): Promise<any> {
         const user = await this.userModel
@@ -136,7 +136,6 @@ export class AuthService {
     async registerUserGoogle(token: string) {
         try {
             const userData = await this.getUserDataGoogle(token);
-            console.log(userData.gender);
             const tempUser: User = {
                 name: userData.name,
                 email: userData.email,
