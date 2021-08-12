@@ -28,7 +28,6 @@
     "@nestjs/passport": "^8.0.0",
     "@nestjs/platform-express": "^7.6.15",
     "bcrypt": "^5.0.1",
-    "bcryptjs": "^2.4.3",
     "googleapis": "^84.0.0",
     "mongoose": "^5.13.2",
     "passport": "^0.4.1",
