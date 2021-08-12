@@ -4,10 +4,11 @@ import { DatabaseModule } from '../database/database.module';
 import { AuthController } from './auth.controller';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtAuthStrategy } from './strategies/jwt.strategy';
+import { GoogleStrategy } from './strategies/google.strategy';
 
 @Module({
     imports: [DatabaseModule, PassportModule],
     controllers: [AuthController],
-    providers: [LocalStrategy, JwtAuthStrategy]
+    providers: [LocalStrategy, JwtAuthStrategy, GoogleStrategy]
 })
 export class AuthModule {}
