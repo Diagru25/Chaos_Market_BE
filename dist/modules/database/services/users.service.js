@@ -40,7 +40,7 @@ let UsersService = class UsersService {
         let foundUser = null;
         if (currentUser.role === roles_enum_1.Role.Root) {
             return this.userModel
-                .findOneAndUpdate(realId, data, { new: true })
+                .findOneAndUpdate({ _id: realId }, data, { new: true })
                 .exec();
         }
         else if (currentUser.role === roles_enum_1.Role.Admin) {

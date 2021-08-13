@@ -56,6 +56,10 @@ __decorate([
     mongoose_1.Prop(),
     __metadata("design:type", Number)
 ], Product.prototype, "sold", void 0);
+__decorate([
+    mongoose_1.Prop({ default: [] }),
+    __metadata("design:type", Array)
+], Product.prototype, "properties", void 0);
 Product = __decorate([
     mongoose_1.Schema()
 ], Product);

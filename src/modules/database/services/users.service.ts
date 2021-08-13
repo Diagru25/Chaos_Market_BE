@@ -32,7 +32,7 @@ export class UsersService {
 
         if (currentUser.role === Role.Root) {
             return this.userModel
-                .findOneAndUpdate(realId, data, { new: true })
+                .findOneAndUpdate({_id: realId}, data, { new: true })
                 .exec();
         } else if (currentUser.role === Role.Admin) {
             foundUser = await this.userModel.findById(realId);

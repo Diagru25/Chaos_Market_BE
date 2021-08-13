@@ -36,6 +36,9 @@ export class Product {
 
   @Prop()
   sold: number;
+
+  @Prop({default: []})
+  properties: Array<{name: string, value: string|number}>;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

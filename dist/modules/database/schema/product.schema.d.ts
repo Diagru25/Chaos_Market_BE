@@ -11,5 +11,9 @@ export declare class Product {
     import_date: number;
     image: string;
     sold: number;
+    properties: Array<{
+        name: string;
+        value: string | number;
+    }>;
 }
 export declare const ProductSchema: import("mongoose").Schema<Document<Product, any, any>, import("mongoose").Model<any, any, any>, undefined, any>;
