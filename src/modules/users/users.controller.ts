@@ -20,7 +20,7 @@ export class UsersController {
     @UseGuards(JwtAuthGuard)
     @Get('/info')
     async findOne(@Request() req) {
-        console.log(req.user);
+        //console.log(req.user);
         return this.usersService.findOne(req.user.id);
     }
     

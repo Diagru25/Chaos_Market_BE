@@ -6,11 +6,13 @@ import {
     Brand,
     User,
     Cart,
+    CartDetail,
     ProductSchema,
     CategorySchema,
     BrandSchema,
     UserSchema,
     CartSchema,
+    CartDetailSchema
 } from './schema';
 import { JwtModule } from '@nestjs/jwt';
 import { BrandsService } from './services/brands.service';
@@ -44,6 +46,10 @@ import keys from 'src/configs/keys';
             {
                 name: Cart.name,
                 schema: CartSchema,
+            },
+            {
+                name: CartDetail.name,
+                schema: CartDetailSchema,
             },
         ]),
         JwtModule.register({

@@ -37,6 +37,9 @@ export class Product {
   @Prop()
   sold: number;
 
+  @Prop()
+  discount: number; // % of price discount
+
   @Prop({default: []})
   properties: Array<{name: string, value: string|number}>;
 }

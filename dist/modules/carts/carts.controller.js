@@ -23,8 +23,8 @@ let CartsController = class CartsController {
     async getCart(req) {
         return this.cartsService.findByOwner(req.user.id);
     }
-    async createCart(data, req) {
-        return this.cartsService.createCart(req.user.id, data);
+    async addToCart(data, req) {
+        return this.cartsService.addToCart(req.user.id, data);
     }
 };
 __decorate([
@@ -43,7 +43,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
-], CartsController.prototype, "createCart", null);
+], CartsController.prototype, "addToCart", null);
 CartsController = __decorate([
     common_1.Controller('v1/carts'),
     __metadata("design:paramtypes", [carts_service_1.CartsService])

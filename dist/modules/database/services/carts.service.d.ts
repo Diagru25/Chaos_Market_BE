@@ -1,8 +1,9 @@
 import { Model } from 'mongoose';
-import { Cart, CartDocument } from '../schema';
+import { CartDetailDocument, CartDocument } from '../schema';
 export declare class CartsService {
     private CartModel;
-    constructor(CartModel: Model<CartDocument>);
-    findByOwner(userId: string): Promise<Cart>;
-    createCart(userId: string, data: Cart): Promise<Cart>;
+    private CartDetailModel;
+    constructor(CartModel: Model<CartDocument>, CartDetailModel: Model<CartDetailDocument>);
+    findByOwner(userId: string): Promise<any>;
+    addToCart(userId: string, data: any): Promise<any>;
 }

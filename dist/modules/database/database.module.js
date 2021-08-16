@@ -44,6 +44,10 @@ DatabaseModule = __decorate([
                     name: schema_1.Cart.name,
                     schema: schema_1.CartSchema,
                 },
+                {
+                    name: schema_1.CartDetail.name,
+                    schema: schema_1.CartDetailSchema,
+                },
             ]),
             jwt_1.JwtModule.register({
                 secret: keys_1.default.JWT_SECRET,

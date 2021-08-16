@@ -14,7 +14,7 @@ export class CartsController {
 
     @UseGuards(JwtAuthGuard)
     @Post()
-    async createCart(@Body() data: any, @Request() req) {
-        return this.cartsService.createCart(req.user.id, data);
+    async addToCart(@Body() data: any, @Request() req) {
+        return this.cartsService.addToCart(req.user.id, data);
     }
 }

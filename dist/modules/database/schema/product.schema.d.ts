@@ -11,6 +11,7 @@ export declare class Product {
     import_date: number;
     image: string;
     sold: number;
+    discount: number;
     properties: Array<{
         name: string;
         value: string | number;

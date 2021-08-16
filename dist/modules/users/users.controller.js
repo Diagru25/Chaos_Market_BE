@@ -23,7 +23,6 @@ let UsersController = class UsersController {
         this.usersService = usersService;
     }
     async findOne(req) {
-        console.log(req.user);
         return this.usersService.findOne(req.user.id);
     }
     async findAll() {

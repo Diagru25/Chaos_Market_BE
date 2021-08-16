@@ -20,9 +20,9 @@ __decorate([
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], Cart.prototype, "owner", void 0);
 __decorate([
-    mongoose_1.Prop({ default: [] }),
-    __metadata("design:type", Array)
-], Cart.prototype, "items", void 0);
+    mongoose_1.Prop(),
+    __metadata("design:type", Number)
+], Cart.prototype, "status", void 0);
 Cart = __decorate([
     mongoose_1.Schema()
 ], Cart);
