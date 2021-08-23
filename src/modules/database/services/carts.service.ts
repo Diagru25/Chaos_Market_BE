@@ -22,7 +22,7 @@ export class CartsService {
         const cartItems = await this.CartDetailModel.find({
             cartId: cart._id,
         })
-            .populate('product', ['_id', 'name', 'image', 'price'])
+            .populate('product', ['_id', 'name', 'image', 'price', 'description', 'discount'])
             .exec();
 
         return apiResponse(
@@ -42,8 +42,6 @@ export class CartsService {
 
     async addToCart(userId: string, data: any): Promise<any> {
         const owner = new ObjectId(userId);
-
-        console.log(data);
 
         try {
             let foundCart = await this.CartModel.findOne({
@@ -69,9 +67,10 @@ export class CartsService {
                     quantity: Number(data.quantity),
                 });
             } else {
-                await foundCartDetail
-                    .update({ quantity: foundCartDetail.quantity + 1 })
-                    .exec();
+                await this.CartDetailModel.updateOne(
+                    { _id: foundCartDetail._id },
+                    { quantity: foundCartDetail.quantity + 1 },
+                );
             }
 
             return apiResponse(HttpStatus.CREATED, {}, 'success');
