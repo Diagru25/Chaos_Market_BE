@@ -1,11 +1,17 @@
-
-import { Controller, Get, HttpCode, Post, Req, UseGuards, Body} from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    HttpCode,
+    Post,
+    Req,
+    Res,
+    UseGuards,
+    Body,
+    HttpStatus
+} from '@nestjs/common';
+import apiResponse from 'src/helpers/api-response';
 import { AuthService } from '../database/services/auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
-import { JwtAuthGuard } from './guards/jwt-auth.guard';
-//import { googleAuthGuard } from './guards/google-auth.guard';
-
-
 @Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) {}
@@ -31,13 +37,29 @@ export class AuthController {
         return this.authService.login(req.user);
     }
 
-    @UseGuards(JwtAuthGuard)
     @Get('/check-session')
-    @HttpCode(200)
-    async checkSession() {
-        return {
-            statusCode: 200,
-            message: 'alive',
-        };
+    async checkSession(@Req() req): Promise<any>{
+        try {
+            const authHeaders = req.headers['authorization'];
+
+            if (authHeaders) {
+                const token = authHeaders;
+                return this.authService.checkSession(token);
+            } else {
+                return apiResponse(
+                    HttpStatus.UNAUTHORIZED,
+                    false,
+                    '',
+                    'no authorization headers',
+                );
+            }
+        } catch (error) {
+            return apiResponse(
+                HttpStatus.UNAUTHORIZED,
+                {},
+                '',
+                error,
+            );
+        }
     }
 }

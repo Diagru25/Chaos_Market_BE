@@ -1,11 +1,12 @@
 import { User, UserDocument } from '../schema/user.schema';
 import { Model } from 'mongoose';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { HttpStatus, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { google, Auth } from 'googleapis';
 import keys from 'src/configs/keys';
 import * as bcrypt from 'bcrypt';
+import apiResponse from 'src/helpers/api-response';
 
 @Injectable()
 export class AuthService {
@@ -27,12 +28,13 @@ export class AuthService {
             sub: user._id,
         };
 
-        return {
-            code: 200,
-            user: user,
-            message: 'success',
-            access_token: this.jwtService.sign(payload),
-        };
+        return apiResponse(
+            HttpStatus.OK,
+            {
+                access_token: this.jwtService.sign(payload),
+            },
+            'success',
+        );
     }
 
     // async googleLogin(user: any) {
@@ -166,11 +168,33 @@ export class AuthService {
             sub: user._id,
         };
 
-        return {
-            code: 200,
-            user: user,
-            message: 'success',
-            access_token: this.jwtService.sign(payload),
-        };
+        return apiResponse(
+            HttpStatus.OK,
+            {
+                access_token: this.jwtService.sign(payload),
+            },
+            'success',
+        );
+    }
+
+    async checkSession(token: string): Promise<any> {
+        try {
+            const realToken = token.replace('Bearer', '').trim();
+
+            const decode = this.jwtService.verify(realToken);
+            const user = this.userModel.findById(decode._id);
+            if (!user) {
+                return apiResponse(
+                    HttpStatus.UNAUTHORIZED,
+                    false,
+                    '',
+                    'Can not authorized',
+                );
+            }
+
+            return apiResponse(HttpStatus.OK, true, 'success');
+        } catch (error) {
+            return apiResponse(HttpStatus.UNAUTHORIZED, false, '', error);
+        }
     }
 }
