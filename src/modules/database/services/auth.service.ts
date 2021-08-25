@@ -28,13 +28,7 @@ export class AuthService {
             sub: user._id,
         };
 
-        return apiResponse(
-            HttpStatus.OK,
-            {
-                access_token: this.jwtService.sign(payload),
-            },
-            'success',
-        );
+        return this.jwtService.sign(payload);
     }
 
     // async googleLogin(user: any) {
@@ -168,13 +162,7 @@ export class AuthService {
             sub: user._id,
         };
 
-        return apiResponse(
-            HttpStatus.OK,
-            {
-                access_token: this.jwtService.sign(payload),
-            },
-            'success',
-        );
+        return this.jwtService.sign(payload);
     }
 
     async checkSession(token: string): Promise<any> {
@@ -184,17 +172,17 @@ export class AuthService {
             const decode = this.jwtService.verify(realToken);
             const user = this.userModel.findById(decode._id);
             if (!user) {
-                return apiResponse(
-                    HttpStatus.UNAUTHORIZED,
-                    false,
-                    '',
-                    'Can not authorized',
-                );
+                // return apiResponse(
+                //     HttpStatus.UNAUTHORIZED,
+                //     false,
+                //     '',
+                //     'Can not authorized',
+                // );
             }
 
-            return apiResponse(HttpStatus.OK, true, 'success');
+            //return apiResponse(HttpStatus.OK, true, 'success');
         } catch (error) {
-            return apiResponse(HttpStatus.UNAUTHORIZED, false, '', error);
+            //return apiResponse(HttpStatus.UNAUTHORIZED, false, '', error);
         }
     }
 }

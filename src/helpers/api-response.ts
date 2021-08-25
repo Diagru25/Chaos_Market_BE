@@ -1,11 +1,13 @@
-const apiResponse = (statusCode, data, message = '', error = null, version = 1) => {
-    return {
+import {Response} from 'express';
+const apiResponse = (res: Response, statusCode: number, data: any, message: any = '', version: any = 1) => {
+    let ans = {
         statusCode,
-        data,
         message,
-        error,
+        data,
         version
     }
+
+    return res.status(statusCode).json(ans);
 };
 
 export default apiResponse;

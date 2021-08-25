@@ -14,7 +14,7 @@ import {
     CartSchema,
     CartDetailSchema
 } from './schema';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { BrandsService } from './services/brands.service';
 import { ProductsService } from './services/products.service';
 import { CategoriesService } from './services/categories.service';
@@ -53,9 +53,9 @@ import keys from 'src/configs/keys';
             },
         ]),
         JwtModule.register({
-            secret: keys.JWT_SECRET,
+            secret: keys.jwt.JWT_SECRET,
             signOptions: {
-                expiresIn: '1d',
+                expiresIn: keys.jwt.expiresIn,
             },
         }),
     ],
@@ -66,7 +66,7 @@ import keys from 'src/configs/keys';
         ProductsService,
         UsersService,
         AuthService,
-        CartsService,
+        CartsService
     ],
     exports: [
         BrandsService,
@@ -74,7 +74,7 @@ import keys from 'src/configs/keys';
         ProductsService,
         UsersService,
         AuthService,
-        CartsService,
+        CartsService
     ],
 })
 export class DatabaseModule {}
